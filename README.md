@@ -25,13 +25,13 @@ No complex setup. Just Docker.
 
 2.  **Trigger a job:**
     ```bash
- curl -X POST http://localhost:3000/webhook/s3-event \
-  -H "Content-Type: application/json" \
-  -d '{
-    "bucket": "raw-data",
-    "keys": ["file1.csv", "file2.csv", "file3.csv"],
-    "pipeline_id": "sales_data"
-  }'
+    curl -X POST http://localhost:3000/webhook/s3-event \
+        -H "Content-Type: application/json" \
+        -d '{
+        "bucket": "raw-data",
+        "keys": ["file1.csv", "file2.csv", "file3.csv"],
+        "pipeline_id": "sales_data"
+    }'
     ```
 
 ### Configuration
