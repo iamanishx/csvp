@@ -1,6 +1,6 @@
 # High-Performance CSV ETL Pipeline
 
-This isn't your average slow Python loop. This is a high-throughput pipeline designed to ingest, process, and store massive CSV files without breaking a sweat.
+This is a high-throughput pipeline designed to ingest, process, and store massive CSV files without breaking a sweat.
 
 ### The Stack
 *   **Ingestor**: Bun.js + Hono (Super fast HTTP handling)
