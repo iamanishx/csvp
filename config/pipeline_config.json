@@ -1,0 +1,23 @@
+{
+  "pipelines": [
+    {
+      "pipeline_id": "sales_data",
+      "s3_bucket": "raw-data",
+      "mongo_collection": "sales",
+      "schema": {
+        "transaction_id": "String",
+        "user_id": "String",
+        "amount": "Float64",
+        "currency": "String",
+        "timestamp": "Datetime"
+      },
+      "transformations": {
+        "rename_columns": {
+          "tx_id": "transaction_id",
+          "u_id": "user_id"
+        },
+        "drop_columns": ["internal_code"]
+      }
+    }
+  ]
+}
