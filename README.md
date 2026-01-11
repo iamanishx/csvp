@@ -10,6 +10,17 @@ This is a high-throughput pipeline designed to ingest, process, and store massiv
 
 ### How It Works
 We use the "Claim Check" pattern to keep things flying:
+
+```mermaid
+graph LR
+    User[User/System] -->|Upload CSV| S3[S3/MinIO]
+    User -->|Webhook| Ingestor[Bun Ingestor]
+    Ingestor -->|1. Queue Job| RMQ[RabbitMQ]
+    RMQ -->|2. Consume| Worker[Python Worker]
+    Worker -->|3. Stream Data| S3
+    Worker -->|4. Bulk Write| Mongo[MongoDB]
+```
+
 1.  **You** upload a file to S3/MinIO.
 2.  **Ingestor** gets a webhook, validates it, and drops a "ticket" into RabbitMQ.
 3.  **Worker** picks up the ticket, streams the file directly from S3, crunches it with Polars, and bulk inserts it into Mongo.
